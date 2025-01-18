@@ -18,7 +18,7 @@ export default function HomePage() {
         async function getItems() {
             try {
                 const response = await axios.get(
-                    "http://localhost:3200/api/items/"
+                    "import.meta.env.VITE_SERVER/api/items/"
                 );
 
                 if (response.status == 200) {
@@ -35,7 +35,7 @@ export default function HomePage() {
 
     const handleLogout = async () => {
         try {
-            await axios.post("http://localhost:3200/api/logout", {}, { withCredentials: true });
+            await axios.post("import.meta.env.VITE_SERVER/api/logout", {}, { withCredentials: true });
             userCtx.setLogin(false);
             userCtx.setUserInfo({});
         } catch (error) {
@@ -48,7 +48,7 @@ export default function HomePage() {
             async function getCartItems() {
                 try {
                     const response = await axios.get(
-                        "http://localhost:3200/api/cart", { withCredentials: true }
+                        "import.meta.env.VITE_SERVER/api/cart", { withCredentials: true }
                     );
                     if (response.status === 200) {
                         setCartItems(response.data);

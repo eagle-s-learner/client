@@ -15,7 +15,7 @@ export function AuthProvider({children}) {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await axios.get('http://localhost:3200/api/userlogincheck/', {
+                const response = await axios.get('import.meta.env.VITE_SERVER/api/userlogincheck/', {
                     withCredentials: true,
                 });
                 if (response.status === 200) {
