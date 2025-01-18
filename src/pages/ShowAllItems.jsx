@@ -12,7 +12,7 @@ export default function ShowAllItems({ items }) {
     async function handleAddToCart(item) {
         try {
             if (login) {
-                const response = await axios.post('import.meta.env.VITE_SERVER/api/additem/', item, {withCredentials: true});
+                const response = await axios.post(import.meta.env.VITE_SERVER+'/api/additem/', item, {withCredentials: true});
                 if (response.status === 200) {
                     setPopupMessage("Item added to cart");
                     setShowPopup(true);

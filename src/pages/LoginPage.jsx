@@ -21,7 +21,7 @@ export default function LoginPage({ setShowLoginPage }) {
         let response = null;
         try {
             response = await axios.post(
-                "import.meta.env.VITE_SERVER/api/login/",
+                import.meta.env.VITE_SERVER+"/api/login/",
                 formData,
                 {
                     headers: {

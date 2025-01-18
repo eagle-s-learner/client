@@ -17,8 +17,8 @@ export default function SignupPage({ setShowSignup }) {
 
         let response = null;
         try {
-            response = await axios.post(
-                "import.meta.env.VITE_SERVER/api/signup/",
+            response = await axios.post(import.meta.env.VITE_SERVER+
+                "/api/signup/",
                 formData,
                 {
                     headers: {
