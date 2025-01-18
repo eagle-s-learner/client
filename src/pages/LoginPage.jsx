@@ -6,8 +6,8 @@ import SignupPage from "./SignUpPage";
 export default function LoginPage({ setShowLoginPage }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [popupMessage, setPopupMessage] = useState("");
-    const [showPopup, setShowPopup] = useState(false);
+    // const [popupMessage, setPopupMessage] = useState("");
+    // const [showPopup, setShowPopup] = useState(false);
 
     const [showSignup, setShowSignup] = useState(false);
 
@@ -41,11 +41,11 @@ export default function LoginPage({ setShowLoginPage }) {
             }
         } catch (error) {
             // console.log(error)
-            setPopupMessage("Email or Password is invalid");
-            setShowPopup(true);
-            setTimeout(() => {
-                setShowPopup(false);
-            }, 3000); // Hide after 3 seconds
+            // setPopupMessage("Email or Password is invalid");
+            // setShowPopup(true);
+            // setTimeout(() => {
+            //     setShowPopup(false);
+            // }, 3000); // Hide after 3 seconds
             console.log(error);
         } finally {
             setShowLoginPage(false);
@@ -107,11 +107,11 @@ export default function LoginPage({ setShowLoginPage }) {
             </div>
             {showSignup && <SignupPage setShowSignup={setShowSignup}/>}
 
-            {showPopup && (
+            {/* {showPopup && (
                 <div className="fixed top-0 left-1/2 transform -translate-x-1/2 mt-4 px-6 py-3 bg-green-500 text-white rounded-lg shadow-md">
                     {popupMessage}
                 </div>
-            )}
+            )} */}
         </div>
     );
 }
