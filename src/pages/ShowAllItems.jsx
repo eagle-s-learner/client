@@ -14,7 +14,7 @@ export default function ShowAllItems({ items }) {
             if (login) {
                 console.log(item);
                 const response = await axios.post(
-                    import.meta.env.VITE_SERVER + "/api/additem/",
+                    import.meta.env.VITE_SERVER + "/api/additem",
                     item,
                     {
                         headers: { "Content-Type": "application/json" },
