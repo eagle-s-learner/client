@@ -13,7 +13,14 @@ export default function ShowAllItems({ items }) {
         try {
             if (login) {
                 console.log(item);
-                const response = await axios.post(import.meta.env.VITE_SERVER+'/api/additem/', item, {withCredentials: true});
+                const response = await axios.post(
+                    import.meta.env.VITE_SERVER + "/api/additem/",
+                    item,
+                    {
+                        headers: { "Content-Type": "application/json" },
+                        withCredentials: true,
+                    }
+                );
                 if (response.status === 200) {
                     setPopupMessage("Item added to cart");
                     setShowPopup(true);
@@ -66,9 +73,9 @@ export default function ShowAllItems({ items }) {
                 ))}
             </div>
 
-            {showLoginPage && <LoginPage setShowLoginPage={setShowLoginPage}/>}
+            {showLoginPage && <LoginPage setShowLoginPage={setShowLoginPage} />}
 
-                {/* show pop up message if item added to cart */}
+            {/* show pop up message if item added to cart */}
             {showPopup && (
                 <div className="fixed top-0 left-1/2 transform -translate-x-1/2 mt-4 px-6 py-3 bg-green-500 text-white rounded-lg shadow-md">
                     {popupMessage}

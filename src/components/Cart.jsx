@@ -15,9 +15,13 @@ export default function Cart({ cartItems, setShowCart }) {
     const handleRemoveItem = async (itemId) => {
         // console.log(itemId);
         try {
-            await axios.delete(import.meta.env.VITE_SERVER+`/api/cart/${itemId}`, {
-                withCredentials: true,
-            });
+            await axios.delete(
+                import.meta.env.VITE_SERVER + `/api/cart/${itemId}`,
+                {
+                    headers: { "Content-Type": "application/json" },
+                    withCredentials: true,
+                }
+            );
             // Remove the item from the UI after deletion
             setShowCart(false); // Close the cart modal after removing an item
         } catch (error) {
@@ -31,9 +35,12 @@ export default function Cart({ cartItems, setShowCart }) {
                 await handleRemoveItem(itemId);
             } else {
                 await axios.put(
-                    import.meta.env.VITE_SERVER+`/api/cart/${itemId}`,
+                    import.meta.env.VITE_SERVER + `/api/cart/${itemId}`,
                     { quantity },
-                    { withCredentials: true }
+                    {
+                        headers: { "Content-Type": "application/json" },
+                        withCredentials: true,
+                    }
                 );
                 // setShowCart(false)
             }

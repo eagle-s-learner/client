@@ -18,7 +18,7 @@ export default function HomePage() {
         async function getItems() {
             try {
                 const response = await axios.get(
-                    import.meta.env.VITE_SERVER+"/api/items/"
+                    import.meta.env.VITE_SERVER + "/api/items/"
                 );
 
                 if (response.status == 200) {
@@ -35,7 +35,14 @@ export default function HomePage() {
 
     const handleLogout = async () => {
         try {
-            await axios.post(import.meta.env.VITE_SERVER+"/api/logout", {}, { withCredentials: true });
+            await axios.post(
+                import.meta.env.VITE_SERVER + "/api/logout",
+                {},
+                {
+                    headers: { "Content-Type": "application/json" },
+                    withCredentials: true,
+                }
+            );
             userCtx.setLogin(false);
             userCtx.setUserInfo({});
         } catch (error) {
@@ -48,7 +55,11 @@ export default function HomePage() {
             async function getCartItems() {
                 try {
                     const response = await axios.get(
-                        import.meta.env.VITE_SERVER+"/api/cart", { withCredentials: true }
+                        import.meta.env.VITE_SERVER + "/api/cart",
+                        {
+                            headers: { "Content-Type": "application/json" },
+                            withCredentials: true,
+                        }
                     );
                     if (response.status === 200) {
                         setCartItems(response.data);
@@ -64,11 +75,13 @@ export default function HomePage() {
 
     return (
         <div>
-            {!isLoading && <h1 className="text-gray-500 w-fit mx-auto">Loading..</h1>}
+            {!isLoading && (
+                <h1 className="text-gray-500 w-fit mx-auto">Loading..</h1>
+            )}
             {isLoading && (
                 <div>
                     <div className="bg-gray-300 p-4">
-                    {userCtx.login ? (
+                        {userCtx.login ? (
                             <div className="flex justify-around items-center">
                                 <h1 className="text-2xl font-semibold text-slate-700">
                                     Cart Processing System
@@ -92,10 +105,12 @@ export default function HomePage() {
                             </h1>
                         )}
                     </div>
-                    <ShowAllItems items={items}/>
+                    <ShowAllItems items={items} />
                 </div>
             )}
-            {showCart && <Cart cartItems={cartItems} setShowCart={setShowCart}/>}
+            {showCart && (
+                <Cart cartItems={cartItems} setShowCart={setShowCart} />
+            )}
         </div>
     );
 }
