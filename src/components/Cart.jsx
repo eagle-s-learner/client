@@ -42,7 +42,7 @@ export default function Cart({ cartItems, setShowCart }) {
                         withCredentials: true,
                     }
                 );
-                // setShowCart(false)
+                setShowCart(false)
             }
         } catch (error) {
             console.log("Failed to update quantity", error);
